@@ -47,8 +47,8 @@ flags.DEFINE_integer('memory_size', 100, 'The size of experience memory (*= scal
 flags.DEFINE_integer('t_target_q_update_freq', 1, 'The frequency of target network to be updated (*= scale)')
 flags.DEFINE_integer('t_test', 1, 'The maximum number of t while training (*= scale)')
 flags.DEFINE_integer('t_ep_end', 100, 'The time when epsilon reach ep_end (*= scale)')
-flags.DEFINE_integer('t_train_max', 5000, 'The maximum number of t while training (*= scale)')
-flags.DEFINE_float('t_learn_start', 5, 'The time when to begin training (*= scale)')
+flags.DEFINE_integer('t_train_max', 5, 'The maximum number of t while training (*= scale)')
+flags.DEFINE_float('t_learn_start', 0.0005, 'The time when to begin training (*= scale)')
 flags.DEFINE_float('learning_rate_decay_step', 5, 'The learning rate of training (*= scale)')
 
 # Optimizer

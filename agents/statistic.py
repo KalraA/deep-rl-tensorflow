@@ -53,6 +53,7 @@ class Statistic(object):
   def on_step(self, t, action, reward, terminal, 
               ep, q, loss, is_update, learning_rate_op):
     if t >= self.t_learn_start:
+      # print 'yoooo'
       self.total_q.extend(q)
       self.actions.append(action)
 
@@ -68,7 +69,7 @@ class Statistic(object):
 
       if is_update:
         self.update_count += 1
-
+      # print 'yo'
       if t % self.t_test == self.t_test - 1 and self.update_count != 0:
         avg_q = np.mean(self.total_q)
         avg_loss = self.total_loss / self.update_count
@@ -90,7 +91,7 @@ class Statistic(object):
           self.save_model(t)
 
           self.max_avg_ep_reward = max(self.max_avg_ep_reward, avg_ep_reward)
-
+        print 'yo'
         self.inject_summary({
             'average/q': avg_q,
             'average/loss': avg_loss,
@@ -113,6 +114,7 @@ class Statistic(object):
     summary_str_lists = self.sess.run([self.summary_ops[tag] for tag in tag_dict.keys()], {
       self.summary_placeholders[tag]: value for tag, value in tag_dict.items()
     })
+    print 'hiii'
     for summary_str in summary_str_lists:
       self.writer.add_summary(summary_str, t)
 
